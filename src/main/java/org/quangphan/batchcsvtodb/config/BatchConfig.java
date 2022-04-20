@@ -84,8 +84,8 @@ public class BatchConfig {
         JdbcBatchItemWriter<Product> jdbcBatchItemWriter = new JdbcBatchItemWriter<>();
         jdbcBatchItemWriter.setDataSource(dataSource());
         jdbcBatchItemWriter.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Product>());
-        jdbcBatchItemWriter.setSql("INSERT INTO product (id, name, description, price) VALUES (:id, :name: :description, :price)");
-
+        jdbcBatchItemWriter.setSql("INSERT INTO product (id, name, description, price) VALUES (:id, :name, :description, :price)");
+        jdbcBatchItemWriter.setDataSource(dataSource());
         return jdbcBatchItemWriter;
     }
 
@@ -93,9 +93,9 @@ public class BatchConfig {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        dataSource.setUrl("jdbc:mariadb://localhost:3306/ccpTatem");
-        dataSource.setUsername("root");
-        dataSource.setPassword("root");
+        dataSource.setUrl("jdbc:mariadb://localhost:3306/ccp_tatem");
+        dataSource.setUsername("admin");
+        dataSource.setPassword("admin");
         return dataSource;
     }
 
